@@ -1,4 +1,4 @@
-const CACHE_NAME = "volt-v1-1-mega";
+const CACHE_NAME = "volt-v2-0-mega";
 const APP_FILES = ["./", "./index.html", "./manifest.json", "./volt-icon.svg"];
 self.addEventListener("install", event => {
   event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(APP_FILES)));

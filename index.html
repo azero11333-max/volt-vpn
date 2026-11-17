@@ -7,7 +7,7 @@
 <meta name="description" content="VOLT VPN — development preview">
 <link rel="manifest" href="manifest.json">
 <link rel="icon" href="volt-icon.svg" type="image/svg+xml">
-<title>VOLT VPN</title>
+<title>VOLT VPN — V2.0</title>
 <style>
 :root{--bg:#070b14;--panel:#101827;--panel2:#18243a;--text:#f4f7ff;--muted:#91a0b8;--border:#263750;--blue:#168cff;--cyan:#35d8ff;--danger:#ff6565}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,sans-serif;transition:.25s;padding-bottom:88px}
@@ -44,6 +44,37 @@ body.light .warning{background:#fff3d6;color:#74500b}.orb-wrap{display:flex;just
 .status{display:inline-flex;align-items:center;gap:6px;background:var(--panel2);padding:7px 10px;border-radius:20px;font-size:11px;color:var(--muted)}.green{color:#52d69a}.empty{text-align:center;color:var(--muted);padding:15px;font-size:13px}
 .install{display:none}.install.show{display:block}.danger{color:var(--danger)}footer{text-align:center;color:var(--muted);font-size:10px;padding:20px}
 @media(max-width:370px){.brand{font-size:18px}.nav button{min-width:42px;font-size:8px}}
+
+/* VOLT V2.0 visual refresh */
+:root{--bg:#050914;--panel:#0d1728;--panel2:#14243b;--border:#243d5d;--blue:#267dff;--cyan:#43e4ff;--text:#f5f9ff;--muted:#9aacc5}
+body{background:radial-gradient(ellipse at 50% -15%,#12345a 0%,var(--bg) 48%);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:.1px}
+header{background:rgba(5,9,20,.92);backdrop-filter:blur(16px);border-bottom:1px solid #294666}
+.brand{font-size:23px;letter-spacing:3.5px;text-shadow:0 0 18px #2b9cff55}
+main{max-width:780px;padding-top:22px}
+h1{font-size:29px;letter-spacing:-.7px;line-height:1.12}
+h2{letter-spacing:-.25px}
+.card{background:linear-gradient(145deg,rgba(17,34,57,.97),rgba(10,20,36,.98));border:1px solid #294565;border-radius:22px;box-shadow:0 12px 32px #0003}
+.stat{background:linear-gradient(145deg,#172d49,#101e32);border:1px solid #294565;border-radius:16px}
+.stat strong{font-size:24px;letter-spacing:-.5px}
+.primary{background:linear-gradient(110deg,#176bff,#25c9ef);box-shadow:0 8px 22px #168cff38;transition:transform .18s,filter .18s}
+.primary:active,.secondary:active,.icon:active{transform:scale(.98);filter:brightness(1.12)}
+.secondary,.icon{border-radius:14px;background:#172b45;border-color:#2b4a6d}
+.orb{width:198px;height:198px;box-shadow:0 0 45px #168cff66,0 0 95px #35d8ff20}
+.orb-inner{background:radial-gradient(circle at 40% 28%,#205b91,#081326 72%)}
+.orb-inner strong{font-size:29px;text-shadow:0 0 20px #35d8ff88}
+.warning{border-radius:15px;background:#352b18;border-color:#85672d}
+.item{border:1px solid #294565;border-radius:14px;background:#14243b}
+.nav{background:rgba(9,17,31,.96);backdrop-filter:blur(18px);border-top:1px solid #294565;padding-top:11px}
+.nav button{font-size:10px;transition:color .2s}
+.nav b{font-size:20px}
+.modal{border-radius:22px;box-shadow:0 24px 70px #0008}
+.field{border-radius:13px}
+.status{border:1px solid #294565}
+#splash{background:radial-gradient(circle at 50% 42%,#102d51,#050914 65%)}
+.splash-logo{letter-spacing:6px;text-shadow:0 0 28px #168cff66}
+footer{padding-bottom:28px}
+@media(min-width:600px){main{padding-left:22px;padding-right:22px}.orb{width:210px;height:210px}}
+
 </style>
 </head>
 <body>
@@ -55,7 +86,7 @@ body.light .warning{background:#fff3d6;color:#74500b}.orb-wrap{display:flex;just
 <div class="orb-wrap"><div class="orb"><div class="orb-inner"><strong>VOLT</strong><small>UI PREVIEW</small></div></div></div>
 <div class="warning">⚠️ <b>DEMO MODE:</b> VOLT does not currently connect to VPN servers, encrypt traffic or protect your internet connection. The timer and status are demonstrations only.</div>
 <div class="card"><div class="row"><div><div class="small">PREFERRED COUNTRY</div><b id="homeCountry">🇿🇦 South Africa</b></div><button class="secondary" onclick="openCountries()">Change</button></div><p class="small">Saved preference only — not an active server location.</p></div>
-<div class="stats"><div class="stat"><small>PREVIEW TIMER</small><strong id="timer">00:00</strong></div><div class="stat"><small>FAVOURITES</small><strong id="favCount">0</strong></div><div class="stat"><small>ACTIVITY EVENTS</small><strong id="historyCount">0</strong></div><div class="stat"><small>VERSION</small><strong>1.1</strong></div></div>
+<div class="stats"><div class="stat"><small>PREVIEW TIMER</small><strong id="timer">00:00</strong></div><div class="stat"><small>FAVOURITES</small><strong id="favCount">0</strong></div><div class="stat"><small>ACTIVITY EVENTS</small><strong id="historyCount">0</strong></div><div class="stat"><small>VERSION</small><strong>2.0</strong></div></div>
 <div class="card"><div class="row"><h2>⭐ Favourite locations</h2><button class="secondary" onclick="showPage('settings')">Manage</button></div><div id="homeFavourites" class="list"></div></div>
 <div class="card"><div class="row"><h2>Recent activity</h2><button class="secondary" onclick="showPage('settings')">View</button></div><div id="homeHistory"></div></div>
 <div class="card install" id="installCard"><h2>Install VOLT</h2><p class="sub">Add VOLT to your Android home screen for an app-like experience.</p><button class="primary" onclick="installApp()">Install VOLT</button></div>
@@ -91,7 +122,7 @@ const dn=new Intl.DisplayNames(["en"],{type:"region"});
 const countries=regions.map(code=>[code,dn.of(code)]).filter(x=>x[1]&&x[1]!==x[0]).sort((a,b)=>a[1].localeCompare(b[1]));
 const flag=c=>String.fromCodePoint(...[...c].map(x=>127397+x.charCodeAt(0)));
 let selected=read("volt_country",{code:"ZA",name:"South Africa"}),favourites=read("volt_favourites",[]),history=read("volt_history",[]),skip=read("volt_skip",false),profile=read("volt_profile",{name:"VOLT User"}),accent=read("volt_accent","#168cff"),language=read("volt_language","en"),pending=null,seconds=0;
-let notices=[{title:"Welcome to VOLT V1.1",message:"The Mega Update is ready.",read:false},{title:"Offline mode",message:"The app shell can be available offline after its first load.",read:false},{title:"Privacy reminder",message:"This is a prototype, not a working VPN.",read:false}];
+let notices=[{title:"Welcome to VOLT V2.0",message:"The Mega Update is ready.",read:false},{title:"Offline mode",message:"The app shell can be available offline after its first load.",read:false},{title:"Privacy reminder",message:"This is a prototype, not a working VPN.",read:false}];
 const translations={en:{home:"Your connection hub.",premium:"Choose your experience.",profile:"My profile",settings:"Settings",about:"About VOLT"},af:{home:"Jou verbinding-spil.",premium:"Kies jou ervaring.",profile:"My profiel",settings:"Instellings",about:"Oor VOLT"},zu:{home:"Indawo yakho yokuxhumana.",premium:"Khetha ulwazi lwakho.",profile:"Iphrofayela yami",settings:"Izilungiselelo",about:"Mayelana ne-VOLT"}};
 function addHistory(message){history.unshift({message,time:new Date().toLocaleString()});history=history.slice(0,30);save("volt_history",history);updateStats();renderHistory()}
 function showPage(id){document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));$(id).classList.add("active");document.querySelectorAll(".nav button").forEach(b=>b.classList.toggle("active",b.dataset.page===id));if(id==="home")renderHome();if(id==="settings")renderSettings();if(id==="profile")renderProfile();addHistory("Opened "+id+" page");scrollTo({top:0,behavior:"smooth"})}
